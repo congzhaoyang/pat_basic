@@ -17,8 +17,13 @@ int main() {
     int n;
     cin >> n;
     vector<stu> a(n);
+    /* Ê¹ÓÃµü´úÆ÷
     for(vector<stu>::iterator it = a.begin(); it != a.end(); it++) {
         cin >> it->name >> it->number >> it->score;
+    }
+    */
+    for(int i = 0; i < n; i++) {
+        cin >> a[i].name >> a[i].number >> a[i].score;
     }
     sort(a.begin(), a.end(), cmp);
     cout << a[n-1].name << " " << a[n-1].number << endl;
