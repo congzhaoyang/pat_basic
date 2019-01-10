@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -26,4 +27,33 @@ int main() {
         }
         cout << a[i];
     }
+}
+*/
+
+// 解法2，数组反转法
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+    vector<int> a(n);
+    m %= n;
+    for(int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    if(m != 0) {
+        reverse(a.begin(), a.end());
+        reverse(a.begin(), a.begin() + m);
+        reverse(a.begin() + m, a.end());
+    }
+    for(int i = 0; i < n; i++) {
+        if(i != 0) {
+            cout << " ";
+        }
+        cout << a[i];
+     }
+     return 0;
 }

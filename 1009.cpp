@@ -1,13 +1,11 @@
 #include <iostream>
 #include <stack>
+#include <string>
 using namespace std;
-
 int main() {
     stack<string> v;
     string s;
-    while(cin >> s){
-        v.push(s);
-    }
+    while(cin >> s) v.push(s);
     cout << v.top();
     v.pop();
     while(!v.empty()) {
@@ -16,5 +14,4 @@ int main() {
     }
     return 0;
 }
-
 
