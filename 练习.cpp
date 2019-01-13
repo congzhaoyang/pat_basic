@@ -158,7 +158,7 @@ int main() {
 }
 */
 
-
+/*
 #include <iostream>
 #include <string.h>
 using namespace std;
@@ -205,4 +205,16 @@ int main() {
 
 	shuzijiami();
 	return 0;
+}
+*/
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main() {
+    int temp = 0;
+    for(int i = 0; i < 5; i++) {
+        temp += pow(10, i) * 7;
+        cout << temp << endl;
+    }
 }
