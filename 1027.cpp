@@ -1,38 +1,35 @@
 #include <iostream>
+#include <math.h>
+
 using namespace std;
 
 int main() {
     int n;
-    char a;
-    // cin >> n >> a;
-    n = 19;
-    a = '*';
-    int sn = 1;
-    int snnext;
-    int floor = 0;
-    if(n == 1) {
-        cout << a;
-    } else {
-        for(int t = 0; ; t++) {
-            sn += 2 * (2 * t + 3);
-            snnext = sn + 2 * (2 * (t + 1) + 3);
-            cout << sn << snnext << endl;
-            if(sn <= n && snnext > n) {
-                floor = t;
-                break;
-            }
-        }
+    char c;
+    cin >> n >> c;
+    int x = floor(sqrt(2 * (n + 1)) - 1);
+    if(x % 2 == 0) {
+        x -= 1;
     }
-    cout << floor;
-    int width = 2 * floor + 3;
-    for(int i = floor; i >= 0; i--) {
-        for(int i = 0; i < width; i++) {
-            cout << a;
-            if(i == width - 1) {
-                cout << endl;
-            }
+    int last = n - (x + 1) * (x + 1) / 2 + 1;
+    for(int i = x; i >= 1; i -= 2) { // Êä³öµ¹Èý½Ç
+        for(int j = 0; j < (x - i) / 2; j++) {
+            cout << " ";
         }
+        for(int k = 0; k < i; k++) {
+            cout << c;
+        }
+        cout << endl;
     }
-
+    for(int i = 3; i <= x; i += 2) {
+        for(int j = 0; j < (x - i) / 2; j++) {
+            cout << " ";
+        }
+        for(int k = 0; k < i; k++) {
+            cout << c;
+        }
+        cout << endl;
+    }
+    cout << last;
     return 0;
 }
