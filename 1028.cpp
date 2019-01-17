@@ -4,27 +4,59 @@
 using namespace std;
 
 struct people {
-    string name;
-    string birth;
+    string name;;
     int year;
     int month;
     int day;
-};
+} oldest, youngest, mostleft, mostright, temp;
+
+bool lessEqu(people a, people b) {
+    if(a.year != b.year) {
+        return a.year > b.year;
+    } else if(a.month != b.month) {
+        return a.month > b.month;
+    } else if(a.day != b.day) {
+        return a.day > b.day;
+    }
+}
+
+bool moreEqu(people a, people b) {
+    if(a.year != b.year) {
+        return a.year < b.year;
+    } else if(a.month != b.month) {
+        return a.month < b.month;
+    } else if(a.day != b.day) {
+        return a.day < b.day;
+    }
+}
+
+void init() {
+    mostleft.year = youngest.year = 1814;
+    mostright.year = oldest.year = 2014;
+    mostleft.month = oldest.month = mostright.month = youngest.month = 9;
+    mostleft.day = oldest.day = mostright.day = youngest.day = 6;
+}
 
 int main() {
-    int n;
+    init();
+    int n, num = 0; // num存储有效生日数
     cin >> n;
-    vector<people> p(n);
-    int total = n;
-    char d;
     for(int i = 0; i < n; i++) {
-        // cin >> p[i].name >> p[i].year >> d >> p[i].month >> d >> p[i].day;
-        cin >> p[i].name;
-        scanf("%d/%d/%d", &p[i].year, &p[i].month, &p[i].day);
-        if((p[i].year >= 2014 && p[i].month >= 9 && p[i].day >= 7) || (p[i].year <= 1814 && p[i].month <= 9 && p[i].day <= 5)) {
-            total--;
+        cin >> temp.name;
+        scanf("%d/%d/%d", &temp.year, &temp.month, &temp.day);
+        if(moreEqu(mostleft, temp) && lessEqu(mostright, temp)) {
+            num++;
+            if(lessEqu(oldest, temp)) {
+                oldest = temp;
+            }
+            if(moreEqu(youngest, temp)) {
+                youngest = temp;
+            }
         }
-        cout << total;
+    }
+    cout << num;
+    if(num > 0) { // 处理零输入和没有数据是合理生日的情况
+        cout << " " << oldest.name << " " << youngest.name;
     }
     return 0;
 }
