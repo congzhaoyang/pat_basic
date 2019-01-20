@@ -6,26 +6,18 @@ using namespace std;
 int main() {
     int n, k;
     cin >> n;
-    vector<int> score(n);
+    vector<int> score(101); // 使用分数作为KEY
     for(int i = 0; i < n; i++) {
-        cin >> score[i];
+        int temp;
+        scanf("%d", &temp);
+        score[temp] += 1;
     }
     cin >> k;
-    vector<int> search(k);
     for(int i = 0; i < k; i++) {
-        cin >> search[i];
-    }
-    int result[k] = {0};
-    for(int i = 0; i < n; i++) {
-        for(int j = 0; j < k; j++) {
-            if(score[i] == search[j]) {
-                result[j]++;
-            }
-        }
-    }
-    for(int i = 0; i < k; i++) {
-        if(i != 0) cout << " ";
-        cout << result[i];
+        int temp;
+        scanf("%d", &temp);
+        if(i != 0) printf(" ");
+        printf("%d", score[temp]);
     }
     return 0;
 }
