@@ -13,7 +13,7 @@ int main() {
         } else if(a[i] >= 'A' && a[i] <= 'Z') {
             m[a[i] - 'A' + 10]++;
         } else {
-            m[a[i] - 'a' + 10]++;
+            m[a[i] - 'a' + 36]++; // 这要相对位置要想清楚， 大写和小写加不同的值。
         }
     }
     for(int i = 0; i < b.length(); i++) {
@@ -22,7 +22,7 @@ int main() {
         } else if(b[i] >= 'A' && b[i] <= 'Z') {
             n[b[i] - 'A' + 10]++;
         } else {
-            n[b[i] - 'a' + 10]++;
+            n[b[i] - 'a' + 36]++;
         }
     }
     for(int i = 0; i < 62; i++) {
