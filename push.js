@@ -15,9 +15,9 @@ if (!shell.which('git')) {
 
 inquirer
   .prompt(promptList)
-  .then(questionNum => {
+  .then(answer => {
     shell.exec('git add .');
-    shell.exec(`git commit -m "${questionNum}"`);
+    shell.exec(`git commit -m "${answer.name}"`);
     shell.exec('git push');
   });
 
