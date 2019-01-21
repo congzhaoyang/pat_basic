@@ -17,5 +17,5 @@ int main() {
     for(int i = 0; i < 26; i++) {
         if(a[i] > a[max]) max = i;
     }
-    printf("%c %d", 'a' + max, a[max]);
+    printf("%c %d", 'a' + max, a[max]); // 使用%c控制输出char型
 }
