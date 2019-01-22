@@ -1,25 +1,36 @@
 #include <iostream>
-#include <string>
+#include <cstring>
 using namespace std;
 
 int main() {
     int n;
     cin >> n;
-    string a[n];
-    string r1 = "YES", r2 = "NO";
-    string key = "PAT";
-    for(int i = 0; i < n; i++) {
-        cin >> a[i];
-    }
-    for(int i = 0; i < n; i++) {
-        if(a[i] == key || a[i] == "APATA") {
-            cout << r1;
-        } else if (a[i].indexof(key) == 1 && (a[i][0] == a[i][4] == " " || a[i][0] == a[i][4] == "A")) {
-            cout << r1;
-        } else if (a[i][1] = "P" && a[i][3] == "T" && a[i][0] == a[i][2] == a[i][5] == " ") {
-            cout << r1;
+    while(n--) {
+        string str;
+        cin >> str;
+        int len = str.length();
+        int nump = 0, numt = 0, other = 0;
+        int locp = -1, loct = -1;
+        for(int i = 0; i < len; i++) {
+            if(str[i] == 'P') {
+                nump++;
+                locp = i;
+            } else if(str[i] == 'T') {
+                numt++;
+                loct = i;
+            } else if(str[i] != 'A') {
+                other++;
+            }
+        }
+        if((nump != 1) || (numt != 1) || (other != 0) || (loct - locp <= 1)) {
+            cout << "NO" << endl;
+            continue;
+        }
+        int x = locp, y = loct - locp - 1, z = len - loct - 1;
+        if(z - x * (y - 1) == x) {
+            cout << "YES" << endl;
         } else {
-            cout << r2;
+            cout << "NO" << endl;
         }
     }
     return 0;
