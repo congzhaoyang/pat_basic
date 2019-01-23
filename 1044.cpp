@@ -36,7 +36,6 @@ int main() {
     while(n--) {
         string str;
         getline(cin, str);
-        cout << str;
         if(str[0] >= '0' && str[0] <= '9') {
             int num = 0;
             for(int i = 0; i < str.length(); i++) {
